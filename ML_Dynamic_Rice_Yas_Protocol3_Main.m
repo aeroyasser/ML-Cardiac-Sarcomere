@@ -19,8 +19,7 @@
 %           i.e., simulations at time-dependent Ca-concentaions.          %
 %-------------------------------------------------------------------------%
 %
-% Protocol 3: to generate Fig6(A & B) from Rice Paper using ML
-%
+% Protocol 3
 %-------------------------------------------------------
 clc; clear all; close all;
 tic
@@ -43,28 +42,12 @@ tic
 %--------------------------------------------------------
 % Muscle Protocol (Isoscarcometric, Isometric, Isotonic)
 %--------------------------------------------------------
-% If (Protocol = 1) Isocarcometric (Fig.5A-B)
-% If (Protocol = 2) Isometric with internal shortening (Fig.7A-B)
+% If (Protocol = 1) Isocarcometric 
+% If (Protocol = 2) Isometric with internal shortening 
 %--------------------------------------------------------------------------
 %                    
 %                        Study cases guide
 %
-%--------------------------------------------------------------------------
-% Case 1:   Isosarcometric Twitches for different SLo =const 
-%                     "Generate Fig-5A"
-%            --------------------------         
-%-----------
-% (Fig. 5A)
-%-----------
-% 1- Protocol = 1
-% 2- Set SLo =[1.8 1.9 2.0 2.1 2.2 2.3] [um]
-% 3- Set Ca_amplitude=1.45 [uM]; 
-%-----------
-% (Fig. 5B)
-%-----------
-% 1- Protocol = 1
-% 2- Set SLo =2.3 [um] 
-% 3- Set Ca_amplitude=[0.85 0.95 1.05 1.15 1.25 1.45] [uM]
 %--------------------------------------------------------------------------
 %------------------------------------------------------------------------
 % Use the following to generate data for the Machine Learning Algorithm
@@ -176,35 +159,17 @@ X1=Y(:,12);
 N_intp=200;                        % Number of interpolated points
 Time_intp=linspace(Tp-1000,Tp,N_intp); % Interpolation Time points
 Factive_intp=interp1(Time,F_active,Time_intp); % Interpolation Avtive Force points
-
-% figure(1)
-% plot(Time,F_active,'g')
-% hold on
-% plot(Time_intp,Factive_intp,'r o')
-%-------------------
-% Total Twitch Force
 %---------------------
 Ftotal_intp=interp1(Time,F_total,Time_intp); % Interpolation Total Force points
-% figure(2)
-% plot(Time,F_total,'g')
-% hold on
-% plot(Time_intp,Ftotal_intp,'r o')
-%---------------------
 %-------------------
 % Sarcommere Length
 %---------------------
 SL_intp=interp1(Time,SL,Time_intp); % Interpolation Total Force points
-% figure(3)
-% plot(Time,SL,'b')
-% hold on
-% plot(Time_intp,SL_intp,'r o')
 %------------------
 % Return Ca values
 %------------------
 T_Ca=Time_intp-(Tp-1000);
 Ca_append = Ca_Transient(T_Ca,Ca_amplitude);
-% figure(4)
-% plot(T_Ca,Ca_append)
 %-------------
 
 %------------------------------------
@@ -232,22 +197,6 @@ SL_output        =[SL_output, SL_intp];           % Append SL output vector
     end % finish M3
     end % finish M2
 end % finish M1
-
-
-
-%---------------
-% Force Active and Force Total Twitch and SL
-%----------------
-figure(5)
-plot(Time_input,F_active_output,'r')
-figure(6)
-plot(Time_input,F_total_output,'r')
-figure(7)
-plot(Time_input,SL_output,'r')
-% figure(8)
-% plot(Time_input,Ca_input,'r')
-%-------------------
-
 % % -------------------------
 % % Export Training data Protocol # 3
 % % -------------------------
@@ -264,4 +213,5 @@ csvwrite('ML_Dynm_Rice_Protocol3_Test1_Fig6AB.csv',ML_Dynamic_Rice_Protocol3_Tes
 
 
 toc
+
    
