@@ -30,8 +30,7 @@ y=data_1(6:8,:);  % output Layer
 % below
 % let's start by a single hiddel layer
 
-hiddenLayerSize=[10 10 5];            % 10 neurons in  first HL & 5 in second HL
-% hiddenLayerSize=[10 10];         % two hiddel layer with 10 neurons each 
+hiddenLayerSize=[10 10 5];         
 
 net=fitnet(hiddenLayerSize);       % net object for ANN
 net.divideParam.testRatio=70/100;  % use 70% on the input data as a training set OR split it ureself
