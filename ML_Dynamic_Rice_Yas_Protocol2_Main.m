@@ -18,10 +18,6 @@
 %                                                                         %
 %           i.e., simulations at time-dependent Ca-concentaions.          %
 %-------------------------------------------------------------------------%
-%
-% Protocol 2: to generate Fig7(A&B) from Rice Paper using ML
-%
-%-------------------------------------------------------
 clc; clear all; close all;
 tic
 
@@ -37,34 +33,6 @@ tic
 
 %------------
 % Cell Type
-%------------
-% (Cell_type =1) for "isolated cell", ( = 2) "trabeculae cell"
-
-%--------------------------------------------------------
-% Muscle Protocol (Isoscarcometric, Isometric, Isotonic)
-%--------------------------------------------------------
-% If (Protocol = 1) Isocarcometric (Fig.5A-B)
-% If (Protocol = 2) Isometric with internal shortening (Fig.7A-B)
-%--------------------------------------------------------------------------
-%                    
-%                        Study cases guide
-%
-%--------------------------------------------------------------------------
-% Case 1:   Isosarcometric Twitches for different SLo =const 
-%                     "Generate Fig-5A"
-%            --------------------------         
-%-----------
-% (Fig. 5A)
-%-----------
-% 1- Protocol = 1
-% 2- Set SLo =[1.8 1.9 2.0 2.1 2.2 2.3] [um]
-% 3- Set Ca_amplitude=1.45 [uM]; 
-%-----------
-% (Fig. 5B)
-%-----------
-% 1- Protocol = 1
-% 2- Set SLo =2.3 [um] 
-% 3- Set Ca_amplitude=[0.85 0.95 1.05 1.15 1.25 1.45] [uM]
 %--------------------------------------------------------------------------
 %------------------------------------------------------------------------
 % Use the following to generate data for the Machine Learning Algorithm
@@ -232,22 +200,6 @@ SL_output        =[SL_output, SL_intp];           % Append SL output vector
     end % finish M3
     end % finish M2
 end % finish M1
-
-
-
-%---------------
-% Force Active and Force Total Twitch and SL
-%----------------
-% figure(5)
-% plot(Time_input,F_active_output,'r')
-% figure(6)
-% plot(Time_input,F_total_output,'r')
-% figure(7)
-% plot(Time_input,SL_output,'r')
-% figure(8)
-% plot(Time_input,Ca_input,'r')
-%-------------------
-
 % %-------------------------
 % % Export Training data Protocol # 2
 % %-------------------------
@@ -269,4 +221,5 @@ csvwrite('ML_Dynm_Rice_Protocol2_Test1_Fig7AB.csv',ML_Dynamic_Rice_Protocol2_Tes
 % csvwrite('ML_Dynm_Rice_Protocol2_Test2_Fig7B.csv',ML_Dynamic_Rice_Protocol2_Test2_Fig7B)
 % %------------------------------
 toc
+
    
