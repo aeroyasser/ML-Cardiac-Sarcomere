@@ -1,15 +1,15 @@
 %-------------------------------------------------------------------------------%
-%                    Johns Hopkins University                                   % 
-%  Institute for Computational Medicine && Department of Biomedical Engineering %                         
+%                    University of Michigan                                   % 
+%                   Engineering and Technology                                %                         
 %          -----------------------------------------------                      %
-%                     Trayanova's Lab                                           %
+%                     Aboelkassem Lab                                           %
 %-------------------------------------------------------------------------------%
 % This code is given to reproduce the work J. J. Rice et al 2008
 % Reference: Biophyscial J. Vol 92, 2008
 %--------------------------------------------------------------------------
 %-------------                                                            % 
 %  Author: Yasser Aboelkassem, PhD                                        %
-%  January 2015                                                           %  
+%  January 2025                                                           %  
 %-------------------------------------------------------------------------%
 %-------------------------------------------------------------------------%
 %                                                                         %
@@ -143,4 +143,5 @@ figure(2)
 plot(Time,SL)
 
 toc
+
    
