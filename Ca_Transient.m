@@ -1,5 +1,5 @@
 % Authors: Yasser Aboelkassem 
-% Year  :  Summer 2013
+% Year  :  Summer 2025
 %-----------------------------
 % This function calculates the Calcium transient 
 %--------------------------------------------------------------------------
@@ -27,4 +27,5 @@ B=(Ca_amplitude-Ca_diastolic)/Beta;
 
 Ca=Ca_diastolic.*(tnew<=t_start)+(tnew>t_start).*(B.*(exp(-(tnew-t_start)/tau1)-exp(-(tnew-t_start)/tau2))+Ca_diastolic);
 end
+
 
