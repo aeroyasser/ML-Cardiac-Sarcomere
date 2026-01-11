@@ -1,7 +1,6 @@
 % -----------------------------------
 % This code uses Rice model data to generate a shall/deep learning ML model
 % using Artificial Neural Network
-% Good source:  https://www.youtube.com/watch?v=xOzh6PMk21I
 % ---------------------------------
 % Yasser Aboelkassem, PhD
 % University of Michigan - Flint
@@ -16,20 +15,12 @@ clc; clear all; close all;
 %-----------------------------------
 % Step 1: Load Training Data 1 
 %-----------------------------------
-data_1=readmatrix('ML_Dynm_Rice_Protocol1_Fig5.csv');  % import data [Time,Temp,Ca,SLo,KSE, Fact, Ftot SL]
-x=data_1(1:5,:);  % input  [Time,Temp,Ca,SLo,KSE]
-y=data_1(6:8,:);  % output [Fact, Ftot, SL]
-
+data_1=readmatrix('ML_Dynm_Rice_Protocol1_Fig5.csv');  % import data from your folder
+x=data_1(1:5,:);  % input  Layer
+y=data_1(6:8,:);  % output Layer
 %------------------------
-% Step 2: Visualize  Data
-%-------------------------
-figure(1)
-plot(x(1,:),y(1,:),'g-');  % x1 = Time
-
-figure(2)
-plot(x(1,:),y(3,:),'g-');  % x1 = Time
 %----------------------------------
-% Step 3: Normalize  Data if Needed
+% Step 2: Normalize  Data if Needed
 %----------------------------------
 
 %-----------------------------------------
@@ -70,52 +61,24 @@ yVal  =tarined_Net(x(:,tr.valInd));    % predicted output based on percentage va
 rmsTrain= sqrt(mean((yTrain-yTrainTrue).^2));  % calculate root mean squared error
 rmsValid= sqrt(mean((yVal-yValTrue).^2));  % calculate root mean squared error
 %-----------------------------
-% Plot output from validation
-%-----------------------------
-% figure(2)
-% plot(yValTrue,yVal,'o')
-% figure(3)
-% plot(rmsTrain,'*')
-
-
 %-----------------------------------------
 % Step 5: Test my ANN
 %-----------------------------------------
 %------------------------------------------------------------------------------
-% Rice: Fig5A Validation
-% Load Test#1 Data @ Temp= 22.5, KSE=1 & Camax = 1.45  
+% Rice Validation
+% Load Test#1 
 %------------------------------------------------------------------------------
-Data_Test1=readmatrix('ML_Dynm_Rice_Protocol1_Test1_Fig5A.csv');  % import data [Time,Temp,Ca,SLo,KSE, Fact, Ftot SL]
-x_test1=Data_Test1(1:5,:);   % input  [Time,Temp,Ca,SLo,KSE]
-y_test1=Data_Test1(6:8,:);   % output [Fact, Ftot SL]
+Data_Test1=readmatrix('ML_Dynm_Rice_Protocol1_Test1.csv');  % import data 
+x_test1=Data_Test1(1:5,:);   % input Layer
+y_test1=Data_Test1(6:8,:);   % output Layer
 Pred1=tarined_Net(x_test1);  % predicted results (NB: this is all outputs states 
-
-Time1=x_test1(1,:);
-
-for i=200:200:1200
-figure(10)
-plot(Time1(i-200+1:1:i),y_test1(1,i-200+1:1:i),'o');
-hold on
-plot(Time1(i-200+1:1:i),Pred1(1,i-200+1:1:i),'g');
-end
-
 %------------------------------------------------------------------------
 
 %----------------------------------------
-% Rice: Fig5B Validation
-% Load Test#2 Data: @ Temp= 22.5, KSE=1 & SL = 2.2   
+% Rice: Validation
+% Load Test#2  
 %----------------------------------------
-Data_Test2=readmatrix('ML_Dynm_Rice_Protocol1_Test2_Fig5B.csv');  % import data [Time,Temp,Ca,SLo,KSE, Fact, Ftot SL]
-x_test2=Data_Test2(1:5,:);    % input  [Time,Temp,Ca,SLo,KSE]
-y_test2=Data_Test2(6:8,:);    % output [Fact, Ftot SL]
+Data_Test2=readmatrix('ML_Dynm_Rice_Protocol1_Test2.csv');  % import data 
+x_test2=Data_Test2(1:5,:);    % input  layer
+y_test2=Data_Test2(6:8,:);    % output layer
 Pred2=tarined_Net(x_test2);   % predicted results (NB: this is all outputs states 
-
-Time2=x_test2(1,:);
-
-for i=200:200:1200
-figure(11)
-plot(Time2(i-200+1:1:i),y_test2(1,i-200+1:1:i),'o');
-hold on
-plot(Time2(i-200+1:1:i),Pred2(1,i-200+1:1:i),'g');
-
-end
