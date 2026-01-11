@@ -1,7 +1,8 @@
 %--------------------------------------------------------------------------
-%                  Johns Hopkins University
+%                  University of Michigan
+%                        Aboelkassem Lab
 %           -----------------------------
-%  Copyright: Yasser Aboelkassem, January 2015
+%  Copyright: Yasser Aboelkassem, January 2025
 %--------------------------------------------------------------------------
 %--------------------------------------------------------------------------
 % This code is given to reproduce thw work J. J. Rice et al 2008
@@ -77,3 +78,4 @@ else
     x =0;
 end
 return
+
